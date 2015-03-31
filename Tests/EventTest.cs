@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using NUnit.Framework;
 
@@ -84,14 +84,14 @@ namespace Tests
 
             var eventArgs = new EventArgs();
             long tsStart = Stopwatch.GetTimestamp();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 1000000; i++)
             {
                 myClassWithObservables.MyEvent.Notify(eventArgs);
             }
             long tsEnd = Stopwatch.GetTimestamp();
 
             double elapsedNs = (tsEnd - tsStart)*(1.0/Stopwatch.Frequency)*1000*1000;
-            Assert.Pass("Average Event notification time is {0:0} nanoseconds", elapsedNs);
+            Assert.Pass("Average Event notification time is {0} nanoseconds", elapsedNs / 1000000.0);
 
             myRefCountedClass = null;
             myClassWithObservables.MyEvent.Dispose();
@@ -110,14 +110,14 @@ namespace Tests
 
             var eventArgs = new EventArgs();
             long tsStart = Stopwatch.GetTimestamp();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 1000000; i++)
             {
                 myClassWithObservables.MyWeakEvent.Notify(eventArgs);
             }
             long tsEnd = Stopwatch.GetTimestamp();
 
             double elapsedNs = (tsEnd - tsStart) * (1.0 / Stopwatch.Frequency) * 1000 * 1000;
-            Assert.Pass("Average Weak Event notification time is {0:0} nanoseconds", elapsedNs);
+            Assert.Pass("Average Weak Event notification time is {0} nanoseconds", elapsedNs / 1000000.0);
 
             myRefCountedClass = null;
             myClassWithObservables.MyEvent.Dispose();
