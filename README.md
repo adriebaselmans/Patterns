@@ -8,7 +8,7 @@ The WeakEvent in this project exactly does this.
 
 Example:
 
-            public Event<EventArgs> MyEvent = new Property<EventArgs>();
+            public Event<EventArgs> MyEvent = new Event<EventArgs>();
             MyEvent.Subscribe(...callback...)
             MyEvent.Notify()
             
