@@ -24,7 +24,6 @@ The Property (and it's 'memory-leak safe' counterpart WeakProperty) class offers
 Note that the WeakProperty also has the same performance penalty as the WeakEvent. 
 
 Notes:
-In most cases, the events perform in the order of 1000 times per second. This is enough for normal application development, where 'realtime' response is of less importance. 
 
 The Property class is NOT  memory leak safe, the WeakProperty class is memory leak safe. 
 For more information see the tests in the project.
