@@ -7,6 +7,7 @@ less importance, we rather use a event mechanism which prevents us from making m
 The WeakEvent in this project exactly does this. 
 
 Example:
+
             public Event<EventArgs> MyEvent = new Property<EventArgs>();
             MyEvent.Subscribe(...callback...)
             MyEvent.Notify()
@@ -26,6 +27,7 @@ In most cases, the events perform in the order of 1000 times per second. This is
 'realtime' response is of less importance. 
 
 Example:
+
             public Property<bool> MyBoolean = new Property<bool>();
             MyBoolean.Subscribe(...callback...)
             MyBoolean.Value = ... //triggers notify if value changed
