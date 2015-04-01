@@ -48,6 +48,7 @@
     <Compile Include="WeakEvent.cs" />
     <Compile Include="WeakObserver.cs" />
     <Compile Include="WeakProperty.cs" />
+    <Compile Include="WpfWeakProperty.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

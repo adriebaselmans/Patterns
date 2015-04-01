@@ -12,6 +12,7 @@ namespace Tests
         public WeakProperty<bool> MyWeakBooleanProperty = new WeakProperty<bool>();
     }
 
+
     /// <summary>
     /// Example ViewModel class, which exposes a property of a model to the view using a 'proxy' property.
     /// </summary>
