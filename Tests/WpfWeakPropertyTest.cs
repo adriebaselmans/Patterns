@@ -21,6 +21,8 @@ namespace Tests
 
             wpfPropertyInViewModel.Value = !wpfPropertyInViewModel.Value;
             Assert.AreEqual(1, notificationCount);
+
+            wpfPropertyInViewModel.Dispose();
         }
     }
 }

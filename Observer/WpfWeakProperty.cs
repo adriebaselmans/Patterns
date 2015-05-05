@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Observer
@@ -25,12 +26,41 @@ namespace Observer
     /// <typeparam name="T"></typeparam>
     public class WpfWeakProperty<T> : WeakProperty<T>, INotifyPropertyChanged where T : new()
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        PropertyChangedEventHandler _propertyChanged;
+
+        IList<PropertyChangedEventHandler> _delegateList;
+
+        public event PropertyChangedEventHandler PropertyChanged 
+        {
+            add 
+            {
+                _delegateList.Add(value);
+                _propertyChanged += value;
+            }
+            remove
+            {
+                _propertyChanged -= value;
+                _delegateList.Remove(value);
+            }
+        }
 
         public WpfWeakProperty()
         {
+            _delegateList = new List<PropertyChangedEventHandler>();
             var valuePropertyName = ReflectionHelper.GetPropertyName(() => Value);
             Subscribe((o, b) => OnPropertyChanged(valuePropertyName));
+        }
+
+        public override void Dispose()
+        {
+            foreach (var del in _delegateList)
+            {
+                _propertyChanged -= del;
+            }
+
+            _delegateList.Clear();
+
+            base.Dispose();
         }
 
         public override sealed void Subscribe(Action<object, T> action)
@@ -39,8 +69,8 @@ namespace Observer
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
-        {        
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        {
+            if (_propertyChanged != null) _propertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

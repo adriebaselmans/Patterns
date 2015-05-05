@@ -14,7 +14,7 @@ namespace Observer
             _observers = new List<IObserver<T>>();
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             _observers.Clear();
         }
