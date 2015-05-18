@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics;
 using NUnit.Framework;
+using Observer;
+using System.Threading;
 
 namespace Tests
 {
@@ -118,6 +120,29 @@ namespace Tests
 
             double elapsedNs = (tsEnd - tsStart) * (1.0 / Stopwatch.Frequency) * 1000 * 1000;
             Assert.Pass("Average Weak Event notification time is {0} nanoseconds", elapsedNs / 1000000.0);
+
+            myRefCountedClass = null;
+            myClassWithObservables.MyEvent.Dispose();
+        }
+
+        [Test]
+        public void GivenEventAndThrottledObserver_WhenNotifyIsCalled_ThenObserverIsNotifiedThrottled()
+        {
+            var refCount = new Counter();
+            var myRefCountedClass = new MyRefcountedClass(refCount);
+
+            var myClassWithObservables = new MyClassWithObservables();
+             myClassWithObservables.MyEvent.Subscribe(new ThrottledObserver<EventArgs>(myRefCountedClass.SomeCallback, TimeSpan.FromMilliseconds(5)));
+            Assert.AreEqual(0, myRefCountedClass.NumberOfCallbacks);
+
+            for (int i = 0; i < 1000; i++)
+            {
+                myClassWithObservables.MyEvent.Notify(new EventArgs());
+                Thread.Sleep(1);
+            }
+                
+
+            Assert.Less(myRefCountedClass.NumberOfCallbacks, 1000);
 
             myRefCountedClass = null;
             myClassWithObservables.MyEvent.Dispose();
