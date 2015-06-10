@@ -29,7 +29,7 @@ namespace Observer
             _observers.Add(new Observer<T>(action));
         }
 
-        public virtual void Subscribe(Action<object, T> action, int maxEventFrequencyInHz)
+        public virtual void SubscribeThrottled(Action<object, T> action, int maxEventFrequencyInHz)
         {
             _observers.Add(new ThrottledObserver<T>(action, maxEventFrequencyInHz));
         }
