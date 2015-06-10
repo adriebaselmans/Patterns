@@ -27,6 +27,11 @@ namespace Observer
             _observers.Add(new Observer<T>(action));
         }
 
+        public virtual void SubscribeThrottled(Action<object, T> action, int maxEventFrequencyInHz)
+        {
+            _observers.Add(new ThrottledObserver<T>(action, maxEventFrequencyInHz));
+        }
+
         public void UnSubscribe(IObserver<T> observer)
         {
             _observers.Remove(observer);

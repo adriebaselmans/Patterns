@@ -11,7 +11,7 @@ namespace Observer
             _weakReference = new WeakReference(action);
         }
 
-        public void Notify(object sender, T args)
+        public virtual void Notify(object sender, T args)
         {
             if (_weakReference != null && _weakReference.IsAlive)
             {
