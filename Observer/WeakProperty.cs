@@ -8,5 +8,10 @@ namespace Observer
         {
             base.Subscribe(new WeakObserver<T>(action));
         }
+
+        public override void Subscribe(Action<object, T> action, int maxEventFrequencyInHz)
+        {
+            base.Subscribe(new WeakThrottledObserver<T>(action, maxEventFrequencyInHz));
+        }
     }
 }
