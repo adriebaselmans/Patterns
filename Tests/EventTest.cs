@@ -154,6 +154,35 @@ namespace Tests
             throttledObserver.Dispose();
         }
 
+        [Test]
+        public void GivenEventAndWeakThrottledObserver_WhenNotifyIsCalled_ThenNotificationIsLimitedCloseToDesiredFrequency()
+        {
+            var refCount = new Counter();
+            var myRefCountedClass = new MyRefcountedClass(refCount);
+
+            const int desiredEventFrequencyInHz = 125;
+            var myClassWithObservables = new MyClassWithObservables();
+
+            var throttledObserver = new WeakThrottledObserver<EventArgs>(myRefCountedClass.SomeCallback, desiredEventFrequencyInHz);
+            myClassWithObservables.MyEvent.Subscribe(throttledObserver);
+            Assert.AreEqual(0, myRefCountedClass.NumberOfCallbacks);
+
+            var sw = new Stopwatch();
+            sw.Start();
+            while (sw.ElapsedMilliseconds < 1000)
+            {
+                myClassWithObservables.MyEvent.Notify(new EventArgs());
+            }
+            sw.Stop();
+
+            Assert.Greater(myRefCountedClass.NumberOfCallbacks, 0);
+            Assert.Less(myRefCountedClass.NumberOfCallbacks, desiredEventFrequencyInHz);
+
+            myRefCountedClass = null;
+            myClassWithObservables.MyEvent.Dispose();
+            throttledObserver.Dispose();
+        }
+
         private static void ForceGarbageCollection()
         {
             GC.Collect();
