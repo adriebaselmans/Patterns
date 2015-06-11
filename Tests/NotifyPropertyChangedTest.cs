@@ -1,15 +1,37 @@
 using System.ComponentModel;
 using NUnit.Framework;
 using Observer;
+using System;
 
 namespace Tests
 {
     /// <summary>
     /// Example of a Model class
     /// </summary>
-    public class Model
+    public class Model : IDisposable
     {
+        private bool disposedValue = false; 
+
         public WeakProperty<bool> MyWeakBooleanProperty = new WeakProperty<bool>();
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    MyWeakBooleanProperty.Dispose();
+                    MyWeakBooleanProperty = null;
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
     }
 
 
@@ -71,6 +93,8 @@ namespace Tests
 
             viewModel.MyProperty = !viewModel.MyProperty;
             Assert.AreEqual(2, notificationCount);
+
+            model.Dispose();
         }
     }
 }
