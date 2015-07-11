@@ -1,0 +1,9 @@
+D:\GitHub\Patterns\Tests\bin\Release\Tests.dll
+D:\GitHub\Patterns\Tests\bin\Release\Tests.pdb
+D:\GitHub\Patterns\Tests\bin\Release\nunit.framework.dll
+D:\GitHub\Patterns\Tests\bin\Release\Observer.pdb
+D:\GitHub\Patterns\Tests\bin\Release\nunit.framework.xml
+D:\GitHub\Patterns\Tests\obj\Release\Tests.csprojResolveAssemblyReference.cache
+D:\GitHub\Patterns\Tests\obj\Release\Tests.dll
+D:\GitHub\Patterns\Tests\obj\Release\Tests.pdb
+D:\GitHub\Patterns\Tests\bin\Release\Observer.dll

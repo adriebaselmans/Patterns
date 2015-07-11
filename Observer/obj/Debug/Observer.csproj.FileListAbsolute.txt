@@ -1,0 +1,10 @@
+D:\GitHub\Observer\bin\Debug\Observer.exe
+D:\GitHub\Observer\bin\Debug\Observer.pdb
+D:\GitHub\Observer\obj\Debug\Observer.csprojResolveAssemblyReference.cache
+D:\GitHub\Observer\obj\Debug\Observer.exe
+D:\GitHub\Observer\obj\Debug\Observer.pdb
+D:\GitHub\Patterns\Observer\obj\Debug\Observer.pdb
+D:\GitHub\Patterns\Observer\bin\Debug\Observer.pdb
+D:\GitHub\Patterns\Observer\obj\Debug\Observer.csprojResolveAssemblyReference.cache
+D:\GitHub\Patterns\Observer\bin\Debug\Observer.dll
+D:\GitHub\Patterns\Observer\obj\Debug\Observer.dll

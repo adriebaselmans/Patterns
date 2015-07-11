@@ -56,11 +56,14 @@
     <Compile Include="Event.cs" />
     <Compile Include="IObserver.cs" />
     <Compile Include="IObservable.cs" />
+    <Compile Include="IViewModel.cs" />
+    <Compile Include="MyViewModel.cs" />
     <Compile Include="Property.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReflectionHelper.cs" />
     <Compile Include="ThrottledObserver.cs" />
+    <Compile Include="ViewModelBase.cs" />
     <Compile Include="WeakEvent.cs" />
     <Compile Include="WeakObserver.cs" />
     <Compile Include="WeakProperty.cs" />

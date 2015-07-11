@@ -1,0 +1,8 @@
+D:\GitHub\Patterns\TestApp\obj\Release\TestApp.csprojResolveAssemblyReference.cache
+D:\GitHub\Patterns\TestApp\bin\Release\TestApp.exe.config
+D:\GitHub\Patterns\TestApp\bin\Release\TestApp.exe
+D:\GitHub\Patterns\TestApp\bin\Release\TestApp.pdb
+D:\GitHub\Patterns\TestApp\bin\Release\Observer.dll
+D:\GitHub\Patterns\TestApp\bin\Release\Observer.pdb
+D:\GitHub\Patterns\TestApp\obj\Release\TestApp.exe
+D:\GitHub\Patterns\TestApp\obj\Release\TestApp.pdb

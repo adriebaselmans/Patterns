@@ -176,7 +176,7 @@ namespace Tests
             sw.Stop();
 
             Assert.Greater(myRefCountedClass.NumberOfCallbacks, 0);
-            Assert.Less(myRefCountedClass.NumberOfCallbacks, desiredEventFrequencyInHz);
+            Assert.LessOrEqual(myRefCountedClass.NumberOfCallbacks, desiredEventFrequencyInHz);
 
             myRefCountedClass = null;
             myClassWithObservables.MyEvent.Dispose();

@@ -1,0 +1,122 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly Observer, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Interface Observer.IObservable`1[T]: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Type parameter: T,  Covariant
+  Methods:
+    Subscribe(IObserver`1): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    UnSubscribe(IObserver`1): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Class Observer.Event`1[T]: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Type parameter: T,  DefaultConstructor
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    Observer.IObservable`1[T]
+    System.IDisposable
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Subscribe(IObserver`1): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Subscribe(Action`2): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    SubscribeThrottled(Action`2, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    UnSubscribe(IObserver`1): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Notify(T): PrivateScope, Public, HideBySig
+Interface Observer.IObserver`1[T]: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Type parameter: T,  Contravariant
+  Methods:
+    Notify(Object, T): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface Observer.IViewModel: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Methods:
+    Register(ViewModelBase, Expression`1): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Class Observer.ViewModelBase: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.ComponentModel.INotifyPropertyChanged
+  Events:
+    System.ComponentModel.PropertyChangedEventHandler PropertyChanged: 
+  Methods:
+    add_PropertyChanged(PropertyChangedEventHandler): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    remove_PropertyChanged(PropertyChangedEventHandler): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    RaisePropertyChanged(String): PrivateScope, Public, HideBySig
+Class Observer.MyViewModel: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :Observer.ViewModelBase
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Observer.WpfWeakProperty`1[System.Boolean] MyLocalProperty : Public
+Class Observer.Property`1[T]: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Type parameter: T,  DefaultConstructor
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    Observer.IObservable`1[T]
+    System.IDisposable
+  Properties:
+    T Value    'get set' : 
+  Methods:
+    Dispose(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    Subscribe(IObserver`1): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Subscribe(Action`2): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    SubscribeThrottled(Action`2, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    UnSubscribe(IObserver`1): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    get_Value(): PrivateScope, Public, HideBySig, SpecialName
+    set_Value(T): PrivateScope, Public, HideBySig, SpecialName
+Class Observer.Observer`1[T]: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Type parameter: T
+    Void .ctor(System.Action`2[System.Object,T]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    Observer.IObserver`1[T]
+  Methods:
+    Notify(Object, T): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Observer.ReflectionHelper: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Methods:
+    GetPropertyName(Expression`1): PrivateScope, Public, Static, HideBySig
+Class ThrottledObserver`1[T]: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Type parameter: T
+  :Observer.Observer`1[T]
+    Void .ctor(System.Action`2[System.Object,T], Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Notify(Object, T): PrivateScope, Public, Virtual, HideBySig
+Class Observer.WeakEvent`1[T]: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Type parameter: T,  DefaultConstructor
+  :Observer.Event`1[T]
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Subscribe(Action`2): PrivateScope, Public, Virtual, HideBySig
+    SubscribeThrottled(Action`2, Int32): PrivateScope, Public, Virtual, HideBySig
+Class Observer.WeakObserver`1[T]: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Type parameter: T
+    Void .ctor(System.Action`2[System.Object,T]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    Observer.IObserver`1[T]
+  Methods:
+    Notify(Object, T): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class Observer.WeakProperty`1[T]: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Type parameter: T,  DefaultConstructor
+  :Observer.Property`1[T]
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Subscribe(Action`2): PrivateScope, Public, Virtual, HideBySig
+    SubscribeThrottled(Action`2, Int32): PrivateScope, Public, Virtual, HideBySig
+Class WeakThrottledObserver`1[T]: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Type parameter: T
+  :Observer.WeakObserver`1[T]
+    Void .ctor(System.Action`2[System.Object,T], Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Notify(Object, T): PrivateScope, Public, Virtual, HideBySig
+Class Observer.WpfWeakProperty`1[T]: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Type parameter: T,  DefaultConstructor
+  :Observer.WeakProperty`1[T]
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    Observer.IViewModel
+  Methods:
+    Register(ViewModelBase, Expression`1): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask

@@ -1,0 +1,5 @@
+D:\GitHub\Patterns\Observer\bin\Release\Observer.pdb
+D:\GitHub\Patterns\Observer\obj\Release\Observer.pdb
+D:\GitHub\Patterns\Observer\obj\Release\Observer.csprojResolveAssemblyReference.cache
+D:\GitHub\Patterns\Observer\bin\Release\Observer.dll
+D:\GitHub\Patterns\Observer\obj\Release\Observer.dll

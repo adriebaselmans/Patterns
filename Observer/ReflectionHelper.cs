@@ -9,7 +9,11 @@ namespace Observer
         {
             var body = exp.Body as MemberExpression;
 
-            if (body == null)
+            if (body != null)
+            {
+                return body.Member.Name;
+            }
+            else
             {
                 var ubody = (UnaryExpression)exp.Body;
                 body = ubody.Operand as MemberExpression;
